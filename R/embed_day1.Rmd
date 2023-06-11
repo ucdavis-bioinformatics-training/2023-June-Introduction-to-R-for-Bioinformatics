@@ -578,7 +578,7 @@ matrix(nums, ncol=2)
 rownames(my_matrix) <- c("row1", "row2", "row3", "row4")
 my_matrix
 
-t(my_matrix)
+t(my_matrix) # transposing the matrix
 ```
 
 ##### To find out the dimension of a matrix:

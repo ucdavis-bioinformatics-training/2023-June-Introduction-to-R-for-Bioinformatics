@@ -158,6 +158,8 @@ length(my_list)
 ```{r}
 # first to recall what are stored in gene_names
 gene_names
+# obtain the 2nd element
+gene_names[2]
 # obtain the first and the third elements
 gene_names[c(1,3)]
 ```
@@ -229,6 +231,13 @@ my_list[1]
 
 
 ```{r}
+# get the element in the 2nd row, 4th column
+my_matrix[2,4]
+# get the entire 2nd row
+my_matrix[2,]
+# get the entire 3rd column
+my_matrix[,3]
+# use a logical vector with recycling
 my_matrix[c(TRUE, FALSE), ]
 ```
 <br>
@@ -304,7 +313,7 @@ kable(data.frame(Simplifying=c("x[[1]]", "x[[1]]", "x[1:3, drop=T]", "x[, 1] or 
 
 Using the built-in dataset **iris**, first subset the dataframe keeping only those rows where the sepal length is greater than 6. Then find the total number for each Species in that subset.
 
-Using **iris**, remove the width columns and then create a new dataframe with the Species and the sum of the rows.
+Using **iris**, remove the width columns and then create a new dataframe with the Species and another column that is the sum of the two length columns for each row.
 
 
 ---
@@ -397,16 +406,6 @@ myQuestions4 = [
       d: "gene_expression[1:2]"
     },
     correctAnswer: "a"
-  },
-  {
-    question: "When you run this code:<br><br>my_list[1] * my_list[[1]]<br><br>you get an error. Why?",
-    answers: {
-      a: "Because you can't multiply a list and a number together.",
-      b: "Because you can't multiply a list with itself.",
-      c: "Because you can't multiply a list with another list.",
-      d: "All of the above."
-    },
-    correctAnswer: "d"
   },
   {
     question: "Using data1 and the 'max' function, find the maximum value across columns C92, I563, and I861:",
