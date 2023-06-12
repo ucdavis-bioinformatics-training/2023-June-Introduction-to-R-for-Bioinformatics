@@ -1248,9 +1248,9 @@ object.</font></h5>
 ##  $ I894: int  474 144 30 591 5 1186 3575 229 0 62 ...</code></pre>
 </div>
 </div>
-<div id="statistics-functions" class="section level3">
-<h3>Statistics functions</h3>
-<table class="table table-striped table-hover table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="statistics-functions" class="section level2">
+<h2>### Statistics functions</h2>
+<table class="table table-striped table-hover table-responsive" style="width: auto !important; ">
 <thead>
 <tr>
 <th style="text-align:center;">
@@ -1345,8 +1345,8 @@ IQR()
 </tbody>
 </table>
 </div>
-<div id="save-data-in-r-session" class="section level3">
-<h3>Save data in R session</h3>
+<div id="save-data-in-r-session" class="section level2">
+<h2>### Save data in R session</h2>
 <div id="to-save-history-in-r-session" class="section level4">
 <h4>To save history in R session</h4>
 <p>savehistory(file=“Oct08.history”)</p>
@@ -1365,7 +1365,7 @@ IQR()
 using an <strong>if…else</strong> statement.</p>
 <p>The basic structure of an <em>if…else</em> statement is</p>
 <p><strong>if (condition statement){</strong></p>
-<pre><code>**some operation**</code></pre>
+<p><strong>some operation</strong></p>
 <p><strong>}</strong></p>
 <p>Two examples of <em>if…else</em> statement</p>
 <pre class="r colsel"><code>Temperature &lt;- 30
@@ -1423,45 +1423,82 @@ a &amp; b</code></pre>
 <pre class="r colsel"><code># element-wise OR
 a | b</code></pre>
 <pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE</code></pre>
-<table style="width:97%;">
-<colgroup>
-<col width="21%" />
-<col width="21%" />
-<col width="27%" />
-<col width="27%" />
-</colgroup>
+</div>
+<div id="truth-table" class="section level2">
+<h2>Truth Table</h2>
+<table class="table table-striped" style="width: auto !important; ">
 <thead>
-<tr class="header">
-<th><pre><code> x</code></pre></th>
-<th><pre><code>  y</code></pre></th>
-<th><pre><code> x &amp;&amp; y</code></pre></th>
-<th><pre><code> x || y</code></pre></th>
+<tr>
+<th style="text-align:center;">
+x
+</th>
+<th style="text-align:center;">
+y
+</th>
+<th style="text-align:center;">
+x &amp;&amp; y
+</th>
+<th style="text-align:center;">
+x || y
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>TRUE</td>
-<td><pre><code>TRUE</code></pre></td>
-<td><pre><code>  TRUE</code></pre></td>
-<td><pre><code>  TRUE</code></pre></td>
+<tr>
+<td style="text-align:center;">
+TRUE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
 </tr>
-<tr class="even">
-<td>FALSE</td>
-<td><pre><code>FALSE</code></pre></td>
-<td><pre><code>  FALSE</code></pre></td>
-<td><pre><code>  FALSE</code></pre></td>
+<tr>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
 </tr>
-<tr class="odd">
-<td>TRUE</td>
-<td><pre><code>FALSE</code></pre></td>
-<td><pre><code>  FALSE</code></pre></td>
-<td><pre><code>  TRUE</code></pre></td>
+<tr>
+<td style="text-align:center;">
+TRUE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
 </tr>
-<tr class="even">
-<td>FALSE</td>
-<td><pre><code>TRUE</code></pre></td>
-<td><pre><code>  FALSE</code></pre></td>
-<td><pre><code>  TRUE</code></pre></td>
+<tr>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
+<td style="text-align:center;">
+FALSE
+</td>
+<td style="text-align:center;">
+TRUE
+</td>
 </tr>
 </tbody>
 </table>

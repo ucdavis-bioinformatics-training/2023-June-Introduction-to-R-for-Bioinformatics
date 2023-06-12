@@ -938,7 +938,7 @@ The basic structure of an *if...else* statement is
 
 **if (condition statement){**
 
-	   **some operation**
+**some operation**
 
 **}**
 
