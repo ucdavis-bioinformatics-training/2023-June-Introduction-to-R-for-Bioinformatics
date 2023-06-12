@@ -131,7 +131,7 @@ The basic structure of *for* loop is:
 
 **for (value in sequence){**
 
-  **some operation**
+**some operation(s)**
 
 **}**
 
@@ -242,12 +242,13 @@ tapply(iris$Sepal.Length, iris$Species, summary)
 
 Even though there are a lot of R packages available, there are always situations where one might have to write one's own function to accomplish some very specific goals. Functions are defined by code with a specific format:
 
-```{r}
-function.name <- function(arg1=arg1, arg2, ...){
-	var <- sin(arg1) + sin(arg2)  # carry out tasks
-	var / 2
-}
-```
+**function.name <- function(arg1=arg1, arg2, ...){**
+
+**var <- sin(arg1) + sin(arg2)  # carry out tasks**
+
+**var / 2**
+
+**}**
 
 Here, we are going to write a function to calculate the area of a triangle given the lengths of three sides.
 
@@ -258,7 +259,7 @@ my.area <- function(side1=side1, side2=side2, side3=side3){
 	return(area)
 }
 
-# let's carry out some test
+# let's carry out a test
 my.area(side1=3, side2=4, side3=5)
 ```
 
@@ -326,37 +327,9 @@ Then use apply to normalize every row of data2. You might want to take a small p
 
 Now take your normalized data and write a function to find the log2-fold change (i.e. the log of the ratio of normalized counts) between any two samples across all genes. Then use one of the apply functions to calculate log2-fold change across ALL samples, given one sample. Finally, use a for loop to find the pair-wise log2-fold changes for every pair of samples.
 
-
-Topic 6. Basic statistics in R
-====================================================
-
-```{r echo=FALSE, results= 'asis'}
-library(knitr)
-kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimum", "Maximum", "Median", "Range of values: minimum and maximum", "Sample quantiles", "Generic function", "Interquartile range"), R_function=c("mean()", "sd()", "var()", "min()", "max()", "median()", "range()", "quantile()", "summary()", "IQR()"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=F, position="center")
-```
-
-Calculate the mean expression for each sample.
-
-```{r}
-apply(data3, 2, mean)
-```
-
-Calculate the range of expression for each sample.
-
-```{r}
-apply(data3, 2, range)
-```
-
-Calculate the quantiles of each samples.
-
-```{r}
-apply(data3, 2, quantile)
-```
-
-
 ---
 
-Topic 7. Simple data visulization in R
+Topic 6. Simple data visulization in R
 ====================================================
 
 Scatter plot and line plot can be produced using the function plot().
@@ -404,7 +377,7 @@ dev.off()
 
 ---
 
-Topic 8. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 ##### Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
@@ -438,7 +411,7 @@ biocLite(c("devtools", "tidyverse","bsseq","DSS"))
 ##### The R function install.packages() can be used to install packages that are not part of Bioconductor.
 
 ```{r eval=FALSE}
-install.packages("ggplot2", repos="http://cran.us.r-project.org")
+install.packages("ggplot2")
 install.packages(c("kableExtra","knitr","dplyr"))
 ```
 
@@ -448,32 +421,9 @@ library(devtools)
 install_github("stephenturner/qqman")
 ```
 
-
-
 ---
 
-Topic 9. Save data in R session
-====================================================
-
-#### To save history in R session
-
-```{r}
-#savehistory(file="Oct08.history")
-
-#loadhistory(file="Oct08.history")
-```
-
-#### To save objects in R session
-
-```{r}
-save(list=c("x", "data"), file="Oct08.RData")
-
-#load("Oct08.RData")
-```
-
----
-
-Topic 10. Slightly more advanced visualization
+Topic 8. Slightly more advanced visualization
 ====================================================
 
 Working with an R notebook, we will load the Iris data as we did earlier in this documentation, generate a table that lists the median of each measurement (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) for each species. Then we will generate plots based on the result. Finally produce an html report with the table and the plot.

@@ -893,7 +893,7 @@ my_matrix
 ```
 
 ```{.r .colsel}
-t(my_matrix)
+t(my_matrix) # transposing the matrix
 ```
 
 ```
@@ -1128,7 +1128,7 @@ cbind(meta.data, Race=c("AJ", "AS", "AA", "NE", "NE", "AS"))
 
 ```{.r .colsel}
 # rbind can be used to add more rows to a data frame.
-rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family_history="Y", patients_age=48, BRCA="YES"))
+rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="Stage4", Family_history="Y", patients_age=48, BRCA="YES"))
 ```
 
 ```
@@ -1139,7 +1139,7 @@ rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family
 ## 4      Patient4        Stage3              N           50  YES
 ## 5      Patient5        Stage1              Y           45  YES
 ## 6      Patient6        Stage4              Y           65   NO
-## 7      Patient7            S4              Y           48  YES
+## 7      Patient7        Stage4              Y           48  YES
 ```
 
 ##### One may use the function *merge* to merge two data frames horizontally, based on one or more common key variables.

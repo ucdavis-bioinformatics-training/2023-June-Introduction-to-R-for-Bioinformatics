@@ -116,7 +116,7 @@ The basic structure of *for* loop is:
 
 **for (value in sequence){**
 
-  **some operation**
+**some operation(s)**
 
 **}**
 
@@ -228,25 +228,25 @@ lapply(1:dim(data3)[1], function(x){sum(data3[x,])})
 
 ```
 ## [[1]]
-## [1] -0.444236
+## [1] 2.035963
 ## 
 ## [[2]]
-## [1] -3.0787
+## [1] 1.514792
 ## 
 ## [[3]]
-## [1] 0.9391608
+## [1] -0.01635569
 ## 
 ## [[4]]
-## [1] 0.7999843
+## [1] -1.877682
 ## 
 ## [[5]]
-## [1] -1.594223
+## [1] -5.900493
 ## 
 ## [[6]]
-## [1] -2.478132
+## [1] 0.8841496
 ## 
 ## [[7]]
-## [1] -0.164876
+## [1] -1.084613
 ```
 
 ```{.r .colsel}
@@ -255,7 +255,8 @@ apply(data3, MARGIN=1, sum)
 ```
 
 ```
-## [1] -0.4442360 -3.0786997  0.9391608  0.7999843 -1.5942227 -2.4781325 -0.1648760
+## [1]  2.03596280  1.51479170 -0.01635569 -1.87768180 -5.90049304  0.88414957
+## [7] -1.08461324
 ```
 
 ```{.r .colsel}
@@ -271,28 +272,26 @@ lapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] 0.3087698
 ## 
 ## [[2]]
-## [1] NaN
+## [1] 0.1803529
 ## 
 ## [[3]]
-## [1] -0.02726006
+## [1] NaN
 ## 
 ## [[4]]
-## [1] -0.09691855
+## [1] NaN
 ## 
 ## [[5]]
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] NaN
+## [1] -0.05347426
 ## 
 ## [[7]]
 ## [1] NaN
@@ -316,12 +315,10 @@ sapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]         NaN         NaN -0.02726006 -0.09691855         NaN         NaN
+## [1]  0.30876984  0.18035292         NaN         NaN         NaN -0.05347426
 ## [7]         NaN
 ```
 
@@ -339,28 +336,26 @@ sapply(1:dim(data3)[1], function(x){log10(sum(data3[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] 0.3087698
 ## 
 ## [[2]]
-## [1] NaN
+## [1] 0.1803529
 ## 
 ## [[3]]
-## [1] -0.02726006
+## [1] NaN
 ## 
 ## [[4]]
-## [1] -0.09691855
+## [1] NaN
 ## 
 ## [[5]]
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] NaN
+## [1] -0.05347426
 ## 
 ## [[7]]
 ## [1] NaN
@@ -414,13 +409,13 @@ tapply(iris$Sepal.Length, iris$Species, summary)
 
 Even though there are a lot of R packages available, there are always situations where one might have to write one's own function to accomplish some very specific goals. Functions are defined by code with a specific format:
 
+**function.name <- function(arg1=arg1, arg2, ...){**
 
-```{.r .colsel}
-function.name <- function(arg1=arg1, arg2, ...){
-	var <- sin(arg1) + sin(arg2)  # carry out tasks
-	var / 2
-}
-```
+**var <- sin(arg1) + sin(arg2)  # carry out tasks**
+
+**var / 2**
+
+**}**
 
 Here, we are going to write a function to calculate the area of a triangle given the lengths of three sides.
 
@@ -432,7 +427,7 @@ my.area <- function(side1=side1, side2=side2, side3=side3){
 	return(area)
 }
 
-# let's carry out some test
+# let's carry out a test
 my.area(side1=3, side2=4, side3=5)
 ```
 
@@ -504,114 +499,9 @@ Then use apply to normalize every row of data2. You might want to take a small p
 
 Now take your normalized data and write a function to find the log2-fold change (i.e. the log of the ratio of normalized counts) between any two samples across all genes. Then use one of the apply functions to calculate log2-fold change across ALL samples, given one sample. Finally, use a for loop to find the pair-wise log2-fold changes for every pair of samples.
 
-
-Topic 6. Basic statistics in R
-====================================================
-
-<table class="table table-striped table-hover table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:center;"> Description </th>
-   <th style="text-align:center;"> R_function </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;"> Mean </td>
-   <td style="text-align:center;"> mean() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Standard deviation </td>
-   <td style="text-align:center;"> sd() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Variance </td>
-   <td style="text-align:center;"> var() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Minimum </td>
-   <td style="text-align:center;"> min() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Maximum </td>
-   <td style="text-align:center;"> max() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Median </td>
-   <td style="text-align:center;"> median() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Range of values: minimum and maximum </td>
-   <td style="text-align:center;"> range() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Sample quantiles </td>
-   <td style="text-align:center;"> quantile() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Generic function </td>
-   <td style="text-align:center;"> summary() </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> Interquartile range </td>
-   <td style="text-align:center;"> IQR() </td>
-  </tr>
-</tbody>
-</table>
-
-Calculate the mean expression for each sample.
-
-
-```{.r .colsel}
-apply(data3, 2, mean)
-```
-
-```
-##           V1           V2           V3           V4           V5           V6 
-## -0.346649486  0.008793076 -0.092977137  0.079650678 -0.286192367  0.028203077 
-##           V7 
-## -0.250973815
-```
-
-Calculate the range of expression for each sample.
-
-
-```{.r .colsel}
-apply(data3, 2, range)
-```
-
-```
-##              V1        V2         V3         V4         V5         V6        V7
-## [1,] -1.2601358 -1.429813 -0.9657221 -0.8445082 -1.1207502 -0.4159189 -1.049318
-## [2,]  0.4141767  1.092636  1.3417363  0.6374432  0.4712311  0.5366006  1.365715
-```
-
-Calculate the quantiles of each samples.
-
-
-```{.r .colsel}
-apply(data3, 2, quantile)
-```
-
-```
-##               V1         V2         V3         V4         V5          V6
-## 0%   -1.26013582 -1.4298127 -0.9657221 -0.8445082 -1.1207502 -0.41591886
-## 25%  -0.94716753 -0.6904241 -0.6909029 -0.2275785 -0.6942241 -0.35246686
-## 50%  -0.09389163 -0.1045066 -0.5266360  0.2387286 -0.1820451 -0.04729063
-## 75%   0.20381973  0.9420417  0.4407939  0.4905241  0.1083329  0.41448210
-## 100%  0.41417665  1.0926358  1.3417363  0.6374432  0.4712311  0.53660057
-##                V7
-## 0%   -1.049317807
-## 25%  -0.879127391
-## 50%  -0.300309042
-## 75%  -0.007324909
-## 100%  1.365714746
-```
-
-
 ---
 
-Topic 7. Simple data visulization in R
+Topic 6. Simple data visulization in R
 ====================================================
 
 Scatter plot and line plot can be produced using the function plot().
@@ -623,13 +513,13 @@ y <- 1 + sqrt(x)/2
 plot(x,y)
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 ```{.r .colsel}
 plot(x,y, type="l")
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-18-2.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-13-2.png)<!-- -->
 
 ```{.r .colsel}
 # plot both the points and lines
@@ -638,7 +528,7 @@ plot(x,y)
 lines(x,y, type="l")
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-18-3.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-13-3.png)<!-- -->
 
 ```{.r .colsel}
 ## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
@@ -652,7 +542,7 @@ boxplot() can be used to summarize data.
 boxplot(data3, xlab="Sample ID", ylab="Raw Counts")
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 
 ```{.r .colsel}
@@ -660,7 +550,7 @@ x <- rnorm(1000)
 boxplot(x)
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
 hist() can be used to create histograms of data.
 
@@ -668,14 +558,14 @@ hist() can be used to create histograms of data.
 hist(x)
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 ```{.r .colsel}
 # use user defined break points
 hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-21-2.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-16-2.png)<!-- -->
 
 
 ```{.r .colsel}
@@ -691,7 +581,7 @@ dev.off()
 
 ---
 
-Topic 8. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 ##### Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
@@ -728,7 +618,7 @@ biocLite(c("devtools", "tidyverse","bsseq","DSS"))
 
 
 ```{.r .colsel}
-install.packages("ggplot2", repos="http://cran.us.r-project.org")
+install.packages("ggplot2")
 install.packages(c("kableExtra","knitr","dplyr"))
 ```
 
@@ -739,34 +629,9 @@ library(devtools)
 install_github("stephenturner/qqman")
 ```
 
-
-
 ---
 
-Topic 9. Save data in R session
-====================================================
-
-#### To save history in R session
-
-
-```{.r .colsel}
-#savehistory(file="Oct08.history")
-
-#loadhistory(file="Oct08.history")
-```
-
-#### To save objects in R session
-
-
-```{.r .colsel}
-save(list=c("x", "data"), file="Oct08.RData")
-
-#load("Oct08.RData")
-```
-
----
-
-Topic 10. Slightly more advanced visualization
+Topic 8. Slightly more advanced visualization
 ====================================================
 
 Working with an R notebook, we will load the Iris data as we did earlier in this documentation, generate a table that lists the median of each measurement (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) for each species. Then we will generate plots based on the result. Finally produce an html report with the table and the plot.
@@ -840,7 +705,7 @@ axis(1, at=x, labels=nms, las=2, cex.axis=0.7)
 text(c(1.5,1.5,1.5), c(0, 0.7, 1.4), labels=species, col=c("red", "blue", "orange"), cex=1.5)
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
 
 # scatter plot of measurement by species
 
@@ -856,7 +721,7 @@ dd <- melt(iris)
 xyplot(value ~ variable | Species, data=dd, scales=list(x=list(rot=90)), xlab="Measurements", ylab="Values")
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-31-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 
 # boxplot by group
@@ -870,7 +735,7 @@ text(x=1:12, y=par("usr")[3] - 0.85, labels=c("", "Sepal.Length", "", "", "Sepal
 legend("topright", fill=cols, legend=levels(dd$Species))
 ```
 
-![](embed_day3_files/figure-html/unnamed-chunk-32-1.png)<!-- -->
+![](embed_day3_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
 ---
 

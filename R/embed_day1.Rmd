@@ -669,7 +669,7 @@ meta.data
 # add a column that has the information on the racial information for each patient.
 cbind(meta.data, Race=c("AJ", "AS", "AA", "NE", "NE", "AS"))
 # rbind can be used to add more rows to a data frame.
-rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family_history="Y", patients_age=48, BRCA="YES"))
+rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="Stage4", Family_history="Y", patients_age=48, BRCA="YES"))
 ```
 
 ##### One may use the function *merge* to merge two data frames horizontally, based on one or more common key variables.

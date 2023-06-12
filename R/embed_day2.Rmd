@@ -231,8 +231,8 @@ my_list[1]
 
 
 ```{r}
-# get the element in the 2nd row, 4th column
-my_matrix[2,4]
+# get the element in the 2nd row, 3rd column
+my_matrix[2,3]
 # get the entire 2nd row
 my_matrix[2,]
 # get the entire 3rd column
@@ -325,11 +325,11 @@ Topic 3. Import and export data in R
 
 ```{r}
 # There is a very convenient way to read files from the internet.
-data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T)
 
 # To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
 download.file("https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", "./raw_counts.txt")
-data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T)
 
 ```
 
@@ -346,15 +346,15 @@ head(data1)
 
 * read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
 
-* read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
+* read.delim(): for reading "tab separated value" files (".tsv"). By default, point(".") is used as decimal point.
 
-* read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
+* read.delim2(): for reading "tab separated value" files (".tsv"). By default, comma (",") is used as decimal point.
 
 <br>
 
 ```{r}
 # We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv", stringsAsFactors=F)
+data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv")
 
 # To look at the file:
 head(data2)
@@ -481,8 +481,32 @@ rep(1:3, each=3)
 str(data2)
 ```
 
+### Statistics functions
+------------------------
 
-#### Conditional structure
+```{r echo=FALSE, results= 'asis'}
+library(knitr)
+kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimum", "Maximum", "Median", "Range of values: minimum and maximum", "Sample quantiles", "Generic function", "Interquartile range"), R_function=c("mean()", "sd()", "var()", "min()", "max()", "median()", "range()", "quantile()", "summary()", "IQR()"), stringsAsFactors=F), align='c') %>% kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=F, position="left")
+```
+
+### Save data in R session
+---------------------------
+
+#### To save history in R session
+
+savehistory(file="Oct08.history")
+
+loadhistory(file="Oct08.history")
+
+#### To save objects in R session
+
+save(list=c("x", "data"), file="Oct08.RData")
+
+load("Oct08.RData")
+
+
+Topic 7: Conditional code
+================================
 
 Decision making is important in programming. This can be achieved using an **if...else** statement.
 
@@ -490,7 +514,7 @@ The basic structure of an *if...else* statement is
 
 **if (condition statement){**
 
-	**some operation**
+	   **some operation**
 
 **}**
 
@@ -521,6 +545,62 @@ if (gene_expression["ESR1"] > 0) {
 }
 
 ```
+
+
+## Logical values and logical expressions
+
+Within an *if statement* you have a condition statement that is being checked. This condition can have multiple parts to it. For example, let's say we wanted to check if gene expression for a gene was greater than 50 **AND** that the current temperature was greater than 20:
+
+```{r}
+if (gene_expression["EGFR"] > 50 && Temperature > 20) {
+  print("Treatment plan 7")
+}
+
+```
+
+If we want to check if EGFR is greater than 50 **OR** the temp is greater than 40:
+
+```{r}
+if (gene_expression["EGFR"] > 50 || Temperature > 40) {
+  print("Treatment plan 9")
+}
+
+```
+
+We can also use **!** to negate a condition:
+
+```{r}
+if (!(meta.data[2,"disease_stage"] == "Stage3")) {
+  print("not Stage3")
+}
+
+if (meta.data[2,"disease_stage"] != "Stage3") {
+  print("not Stage3")
+}
+
+```
+
+Finally, we can also use the logical operations in an element-wise way:
+
+```{r}
+a = c(TRUE,FALSE,FALSE,TRUE,FALSE)
+b = c(TRUE,TRUE,TRUE,FALSE,FALSE)
+
+# element-wise AND
+a & b
+
+# element-wise OR
+a | b
+
+```
+
+Truth Table
+-----------
+
+```{r, echo=FALSE}
+kable(data.frame(c("TRUE", "FALSE", "TRUE", "FALSE"), c("TRUE", "FALSE", "FALSE", "TRUE"), c("TRUE", "FALSE", "FALSE", "FALSE"), c("TRUE", "FALSE", "TRUE", "TRUE")), align='c', col.names=c("x","y","x && y","x || y")) %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+```
+
 
 Save your workspace so we can load it for day 3:
 ```{r}

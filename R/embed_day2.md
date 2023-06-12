@@ -198,6 +198,15 @@ gene_names
 ```
 
 ```{.r .colsel}
+# obtain the 2nd element
+gene_names[2]
+```
+
+```
+## [1] "p53"
+```
+
+```{.r .colsel}
 # obtain the first and the third elements
 gene_names[c(1,3)]
 ```
@@ -336,6 +345,36 @@ my_list[1]
 
 
 ```{.r .colsel}
+# get the element in the 2nd row, 3rd column
+my_matrix[2,3]
+```
+
+```
+## [1] 37
+```
+
+```{.r .colsel}
+# get the entire 2nd row
+my_matrix[2,]
+```
+
+```
+## col1 col2 col3 
+##    3   18   37
+```
+
+```{.r .colsel}
+# get the entire 3rd column
+my_matrix[,3]
+```
+
+```
+## row1 row2 row3 row4 
+##    8   37  267   19
+```
+
+```{.r .colsel}
+# use a logical vector with recycling
 my_matrix[c(TRUE, FALSE), ]
 ```
 
@@ -540,7 +579,7 @@ Because the syntax of carrying out simplifying and preserving subsetting differs
 
 Using the built-in dataset **iris**, first subset the dataframe keeping only those rows where the sepal length is greater than 6. Then find the total number for each Species in that subset.
 
-Using **iris**, remove the width columns and then create a new dataframe with the Species and the sum of the rows.
+Using **iris**, remove the width columns and then create a new dataframe with the Species and another column that is the sum of the two length columns for each row.
 
 
 ---
@@ -553,11 +592,11 @@ Topic 3. Import and export data in R
 
 ```{.r .colsel}
 # There is a very convenient way to read files from the internet.
-data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T)
 
 # To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
 download.file("https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", "./raw_counts.txt")
-data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T)
 ```
 
 To check what type of object *data1* is in and take a look at the beginning part of the data.
@@ -598,16 +637,16 @@ head(data1)
 
 * read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
 
-* read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
+* read.delim(): for reading "tab separated value" files (".tsv"). By default, point(".") is used as decimal point.
 
-* read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
+* read.delim2(): for reading "tab separated value" files (".tsv"). By default, comma (",") is used as decimal point.
 
 <br>
 
 
 ```{.r .colsel}
 # We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv", stringsAsFactors=F)
+data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv")
 
 # To look at the file:
 head(data2)
@@ -679,16 +718,6 @@ myQuestions4 = [
     correctAnswer: "a"
   },
   {
-    question: "When you run this code:<br><br>my_list[1] * my_list[[1]]<br><br>you get an error. Why?",
-    answers: {
-      a: "Because you can't multiply a list and a number together.",
-      b: "Because you can't multiply a list with itself.",
-      c: "Because you can't multiply a list with another list.",
-      d: "All of the above."
-    },
-    correctAnswer: "d"
-  },
-  {
     question: "Using data1 and the 'max' function, find the maximum value across columns C92, I563, and I861:",
     answers: {
       a: "69853",
@@ -738,7 +767,7 @@ getwd()
 ```
 
 ```
-## [1] "/home/joshi/Desktop/work/workshops/2022-October-Introduction-to-R-for-Bioinformatics/R"
+## [1] "/home/joshi/Desktop/work/workshops/2023-June-Introduction-to-R-for-Bioinformatics/R"
 ```
 
 ```{.r .colsel}
@@ -830,8 +859,78 @@ str(data2)
 ##  $ I894: int  474 144 30 591 5 1186 3575 229 0 62 ...
 ```
 
+### Statistics functions
+------------------------
 
-#### Conditional structure
+<table class="table table-striped table-hover table-responsive" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Description </th>
+   <th style="text-align:center;"> R_function </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> Mean </td>
+   <td style="text-align:center;"> mean() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Standard deviation </td>
+   <td style="text-align:center;"> sd() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Variance </td>
+   <td style="text-align:center;"> var() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Minimum </td>
+   <td style="text-align:center;"> min() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Maximum </td>
+   <td style="text-align:center;"> max() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Median </td>
+   <td style="text-align:center;"> median() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Range of values: minimum and maximum </td>
+   <td style="text-align:center;"> range() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Sample quantiles </td>
+   <td style="text-align:center;"> quantile() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Generic function </td>
+   <td style="text-align:center;"> summary() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Interquartile range </td>
+   <td style="text-align:center;"> IQR() </td>
+  </tr>
+</tbody>
+</table>
+
+### Save data in R session
+---------------------------
+
+#### To save history in R session
+
+savehistory(file="Oct08.history")
+
+loadhistory(file="Oct08.history")
+
+#### To save objects in R session
+
+save(list=c("x", "data"), file="Oct08.RData")
+
+load("Oct08.RData")
+
+
+Topic 7: Conditional code
+================================
 
 Decision making is important in programming. This can be achieved using an **if...else** statement.
 
@@ -839,7 +938,7 @@ The basic structure of an *if...else* statement is
 
 **if (condition statement){**
 
-	**some operation**
+	   **some operation**
 
 **}**
 
@@ -877,6 +976,123 @@ if (gene_expression["ESR1"] > 0) {
 ```
 ## [1] "Treatment plan 2"
 ```
+
+
+## Logical values and logical expressions
+
+Within an *if statement* you have a condition statement that is being checked. This condition can have multiple parts to it. For example, let's say we wanted to check if gene expression for a gene was greater than 50 **AND** that the current temperature was greater than 20:
+
+
+```{.r .colsel}
+if (gene_expression["EGFR"] > 50 && Temperature > 20) {
+  print("Treatment plan 7")
+}
+```
+
+```
+## [1] "Treatment plan 7"
+```
+
+If we want to check if EGFR is greater than 50 **OR** the temp is greater than 40:
+
+
+```{.r .colsel}
+if (gene_expression["EGFR"] > 50 || Temperature > 40) {
+  print("Treatment plan 9")
+}
+```
+
+```
+## [1] "Treatment plan 9"
+```
+
+We can also use **!** to negate a condition:
+
+
+```{.r .colsel}
+if (!(meta.data[2,"disease_stage"] == "Stage3")) {
+  print("not Stage3")
+}
+```
+
+```
+## [1] "not Stage3"
+```
+
+```{.r .colsel}
+if (meta.data[2,"disease_stage"] != "Stage3") {
+  print("not Stage3")
+}
+```
+
+```
+## [1] "not Stage3"
+```
+
+Finally, we can also use the logical operations in an element-wise way:
+
+
+```{.r .colsel}
+a = c(TRUE,FALSE,FALSE,TRUE,FALSE)
+b = c(TRUE,TRUE,TRUE,FALSE,FALSE)
+
+# element-wise AND
+a & b
+```
+
+```
+## [1]  TRUE FALSE FALSE FALSE FALSE
+```
+
+```{.r .colsel}
+# element-wise OR
+a | b
+```
+
+```
+## [1]  TRUE  TRUE  TRUE  TRUE FALSE
+```
+
+Truth Table
+-----------
+
+<table class="table table-striped" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> x </th>
+   <th style="text-align:center;"> y </th>
+   <th style="text-align:center;"> x &amp;&amp; y </th>
+   <th style="text-align:center;"> x || y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> TRUE </td>
+   <td style="text-align:center;"> TRUE </td>
+   <td style="text-align:center;"> TRUE </td>
+   <td style="text-align:center;"> TRUE </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> FALSE </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> TRUE </td>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> TRUE </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> TRUE </td>
+   <td style="text-align:center;"> FALSE </td>
+   <td style="text-align:center;"> TRUE </td>
+  </tr>
+</tbody>
+</table>
+
 
 Save your workspace so we can load it for day 3:
 
