@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2023-06-12"
+date: "2023-06-13"
 output:
     html_document:
         keep_md: TRUE
@@ -22,8 +22,6 @@ background-color: lightyellow;
 
 
 
-```{=html}
-<!DOCTYPE html>
 
 <html>
 
@@ -1248,8 +1246,8 @@ object.</font></h5>
 ##  $ I894: int  474 144 30 591 5 1186 3575 229 0 62 ...</code></pre>
 </div>
 </div>
-<div id="statistics-functions" class="section level2">
-<h2>### Statistics functions</h2>
+<div id="statistics-functions" class="section level3">
+<h3>Statistics functions</h3>
 <table class="table table-striped table-hover table-responsive" style="width: auto !important; ">
 <thead>
 <tr>
@@ -1345,8 +1343,8 @@ IQR()
 </tbody>
 </table>
 </div>
-<div id="save-data-in-r-session" class="section level2">
-<h2>### Save data in R session</h2>
+<div id="save-data-in-r-session" class="section level3">
+<h3>Save data in R session</h3>
 <div id="to-save-history-in-r-session" class="section level4">
 <h4>To save history in R session</h4>
 <p>savehistory(file=“Oct08.history”)</p>

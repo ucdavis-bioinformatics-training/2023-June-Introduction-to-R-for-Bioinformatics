@@ -860,7 +860,6 @@ str(data2)
 ```
 
 ### Statistics functions
-------------------------
 
 <table class="table table-striped table-hover table-responsive" style="width: auto !important; ">
  <thead>
@@ -914,7 +913,6 @@ str(data2)
 </table>
 
 ### Save data in R session
----------------------------
 
 #### To save history in R session
 

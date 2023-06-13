@@ -22,9 +22,6 @@ background-color: lightyellow;
 
 
 
-```{=html}
-<!DOCTYPE html>
-
 <html>
 
 <head>

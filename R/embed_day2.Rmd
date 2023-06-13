@@ -482,7 +482,6 @@ str(data2)
 ```
 
 ### Statistics functions
-------------------------
 
 ```{r echo=FALSE, results= 'asis'}
 library(knitr)
@@ -490,7 +489,6 @@ kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimu
 ```
 
 ### Save data in R session
----------------------------
 
 #### To save history in R session
 
